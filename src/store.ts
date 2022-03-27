@@ -6,7 +6,7 @@ import { RootState } from './types'
 import userReducer from './ducks/reducers/UserReducers'
 
 const reducer = combineReducers<RootState>({
-  user: userReducer,
+  users: userReducer,
   
 })
 

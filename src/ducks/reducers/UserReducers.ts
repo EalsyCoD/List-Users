@@ -1,7 +1,7 @@
 import { UserInitialState, UserAction } from '../../types'
 
 
-const initialState: UserInitialState = {
+const initialState: UserInitialState = [{
     id: 0,
     name: '',
     username: '',
@@ -23,14 +23,14 @@ const initialState: UserInitialState = {
       catchPhrase: '',
       bs: ''
     },
-  }
+}]
 const userReducer = (
     state: UserInitialState = initialState,
     action: UserAction
 ) : UserInitialState => {
+  console.log(state)
     switch(action.type){
         case 'SET-USERS':
-          console.log(state)
             return action.payload
             default:
                 return state
