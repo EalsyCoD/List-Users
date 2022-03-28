@@ -1,5 +1,6 @@
 export interface RootState {
     users: UserInitialState
+    filter: any
 }
 
 
@@ -33,6 +34,7 @@ export type UserAction = {
   type: string,
   payload: UserInitialState
 }
+
 
 
 export type DispatchUserType = (args: UserAction) => UserAction

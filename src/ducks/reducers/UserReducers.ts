@@ -28,7 +28,6 @@ const userReducer = (
     state: UserInitialState = initialState,
     action: UserAction
 ) : UserInitialState => {
-  console.log(state)
     switch(action.type){
         case 'SET-USERS':
             return action.payload

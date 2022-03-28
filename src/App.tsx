@@ -16,6 +16,7 @@ const App = () => {
       dispatch(setUser(1))
     }, [dispatch])
   
+
     return (
       <div className={styled.container}>
         <Header />
