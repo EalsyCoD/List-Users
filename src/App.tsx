@@ -7,7 +7,6 @@ import UsersList from './Components/ListUsers/UsersList'
 
 import { setUser } from './ducks/actions/UserAction'
 
-
 import styled from './styles.module.scss'
 
 const App = () => {

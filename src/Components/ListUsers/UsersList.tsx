@@ -9,13 +9,17 @@ const UsersList = (): JSX.Element => {
     const dispatch = useDispatch()
     const users = useSelector((state: RootState) => state.users)
         
+    const filters = useSelector((state: RootState) => state.filter)
     const handleChange = () => {
-        const filterSort = users.sort((a:any,b:any) => (a.name > b.name ? 1 : -1))
+        const filterSort = users.sort((a:any,b:any) => (a.address.city > b.address.city ? 1 : -1))
+        dispatch(filterNameChange(filterSort))
+    }
+    const handleChangeCompany = () => {
+        const filterSort = users.sort((a:any,b:any) => (a.company.name > b.company.name ? 1 : -1))
         dispatch(filterNameChange(filterSort))
     }
     return (
         <div className={styled.container}>
-             <button onClick={handleChange} className={styled.company}>3232</button>
                 {Array.isArray(users) && users.map((user:any,i:any) => {
                     return(
                         <div className={styled.border} key={i}>

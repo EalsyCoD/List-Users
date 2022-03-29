@@ -1,8 +1,18 @@
 export interface RootState {
     users: UserInitialState
-    filter: any
+    filter: FilterInitialState
 }
 
+export type FilterInitialState ={
+  filter: any
+}
+
+export type FilterAction = {
+  type: string,
+  payload: FilterInitialState
+}
+
+export type DispatchFilter = (args: FilterAction) => FilterAction
 
 export type UserInitialState = [{
   id: number,
