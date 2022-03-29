@@ -3,8 +3,9 @@ import styled from "./UsersList.module.scss";
 import { useSelector } from "react-redux";
 import { RootState } from "../../types";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import { filterNameChange } from "../../ducks/reducers/FilterReducer";
-import { setUser } from "../../ducks/actions/UserAction";
+
 const UsersList = (): JSX.Element => {
   const dispatch = useDispatch();
   const users = useSelector((state: RootState) => state.users);
@@ -31,9 +32,9 @@ const UsersList = (): JSX.Element => {
               <div className={styled.users}>
                 <p className={styled.name}>ФИО:</p>{" "}
                 <p className={styled.username}>{user.name}</p>
-                <button type="submit" className={styled.button}>
+                <Link to="/profile" type="submit" className={styled.button}>
                   Подробнее
-                </button>
+                </Link>
               </div>
               <div className={styled.users}>
                 <p className={styled.name}>город:</p>{" "}
