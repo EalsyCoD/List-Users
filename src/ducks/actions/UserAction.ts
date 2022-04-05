@@ -1,6 +1,7 @@
 import { AnyAction } from "redux";
 import { ThunkAction } from "redux-thunk";
 import axios from "axios";
+import { setLoader, deleteLoader } from "./LoaderAction";
 
 import { RootState } from "../../types";
 
@@ -9,12 +10,16 @@ const setUser = (
 ): ThunkAction<void, RootState, unknown, AnyAction> => {
   return async (dispatch) => {
     try {
+      dispatch(setLoader());
       const res = await axios.get("/users");
       dispatch({
         type: "SET-USERS",
         payload: res.data,
       });
-    } catch (err: any) {}
+      dispatch(deleteLoader());
+    } catch (err: any) {
+      dispatch(deleteLoader());
+    }
   };
 };
 

@@ -1,20 +1,10 @@
 import { EditUserState, EditUserAction } from "../../types";
 
 const initialState: EditUserState = {
-  id: 0,
-  name: "",
-  username: "",
-  email: "",
-  address: {
-    street: "",
-    city: "",
-    zipcode: 0,
-  },
-  phone: 0,
-  website: "",
-}
+  items: [],
+};
 
-const RepoReducer = (
+const edituserReducer = (
   state: EditUserState = initialState,
   action: EditUserAction
 ): EditUserState => {
@@ -27,4 +17,4 @@ const RepoReducer = (
   }
 };
 
-export default RepoReducer;
+export default edituserReducer;

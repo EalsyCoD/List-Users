@@ -1,21 +1,46 @@
 export interface RootState {
   users: UserInitialState;
   filter: FilterInitialState;
-  edituser: EditUserState
-  edit: EditState
+  edituser: EditUserState;
+  edit: EditState;
+  loader: LoaderState;
 }
 
+export type ICard = {
+  id: number;
+  name: string;
+  username: string;
+  email: string;
+  company: Company;
+  address: UserAddress;
+  phone: number;
+  website: string;
+};
+
+export type Company = {
+  name: string;
+};
+
+export type LoaderState = {
+  status: boolean;
+};
+
+export type LoaderAction = {
+  type: string;
+  payload: LoaderState;
+};
+
+export type DispatchLoaderType = (args: LoaderAction) => LoaderAction;
 
 export type EditState = {
-  users: any,
-  id?: number,
-  
-}
+  users: any;
+  id?: number;
+};
 
 export type EditAction = {
-  type: string
-  payload: EditState
-}
+  type: string;
+  payload: EditState;
+};
 
 export type FilterInitialState = {
   filter: any;
@@ -29,7 +54,7 @@ export type FilterAction = {
 export type DispatchFilter = (args: FilterAction) => FilterAction;
 
 export type UserInitialState = [
-  { 
+  {
     id: number;
     name: string;
     username: string;
@@ -66,14 +91,8 @@ export type UserAddress = {
 };
 
 export type EditUserState = {
-  id: number,
-  name: string,
-  username: string,
-  email: string,
-  address: UserAddress,
-  phone: number,
-  website: string,
-}
+  items: ICard[];
+};
 
 export type EditUserAction = {
   type: string;

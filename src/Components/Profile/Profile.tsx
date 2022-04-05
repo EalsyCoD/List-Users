@@ -1,23 +1,33 @@
 import React from "react";
 
 import styled from "./Profile.module.scss";
-import { useDispatch ,useSelector } from "react-redux";
-import { RootState } from "../../types";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState, ICard } from "../../types";
 import SideBar from "../../Components/SideBar/SideBar";
 
-import { EditUser } from '../../ducks/actions/EditAction'
-
+import { EditUser } from "../../ducks/actions/EditAction";
 
 interface Props {
   name: string;
 }
+
 const Profile: React.FC<Props> = ({ name }, user): JSX.Element => {
-  const dispatch = useDispatch()
-  const [edit, setEdit] = React.useState({ name: "", username: "", email: "", street: "", city: '', zipcode: '', phone:'', website: '', comment: ''});
-  const edituser = useSelector((state: RootState) => state.edituser)
+  const dispatch = useDispatch();
+  const [edit, setEdit] = React.useState({
+    name: "",
+    username: "",
+    email: "",
+    street: "",
+    city: "",
+    zipcode: "",
+    phone: "",
+    website: "",
+    comment: "",
+  });
+  const edituser = useSelector((state: RootState) => state.edituser);
 
   const handleEdit = (user: any) => {
-    console.log('edit', user)
+    console.log("edit", user);
     const userEdit = {
       ...user,
       name: edit.name,
@@ -28,10 +38,20 @@ const Profile: React.FC<Props> = ({ name }, user): JSX.Element => {
       zipcode: edit.zipcode,
       phone: edit.phone,
       website: edit.website,
-    }
-    dispatch(EditUser(userEdit))
-    setEdit({ name: "", username: "", email: "", street: "", city: '', zipcode: '', phone:'', website: '', comment: ''})
-  }
+    };
+    dispatch(EditUser(userEdit));
+    setEdit({
+      name: "",
+      username: "",
+      email: "",
+      street: "",
+      city: "",
+      zipcode: "",
+      phone: "",
+      website: "",
+      comment: "",
+    });
+  };
 
   return (
     <React.Fragment>
@@ -53,105 +73,109 @@ const Profile: React.FC<Props> = ({ name }, user): JSX.Element => {
               className={styled.border}
               type="text"
               onChange={(e) =>
-              setEdit({
-                ...edit,
-                name: e.target.value
-              })}
+                setEdit({
+                  ...edit,
+                  name: e.target.value,
+                })
+              }
             ></input>
           </div>
           <div>
             <p className={styled.username}>User name</p>
             <input
-            value={edit.username}
+              value={edit.username}
               className={styled.bordername}
               type="text"
               onChange={(e) =>
                 setEdit({
                   ...edit,
-                  username: e.target.value
-                })}
+                  username: e.target.value,
+                })
+              }
             ></input>
           </div>
           <div>
             <p className={styled.username}>E-mail</p>
             <input
-            value={edit.email}
+              value={edit.email}
               className={styled.bordername}
               type="text"
-              placeholder={edituser.email}
               onChange={(e) =>
                 setEdit({
                   ...edit,
-                  email: e.target.value
-                })}
+                  email: e.target.value,
+                })
+              }
             ></input>
           </div>
           <div>
             <p className={styled.username}>Street</p>
             <input
-            value={edit.street}
+              value={edit.street}
               className={styled.bordername}
               type="text"
-              placeholder={edituser.address.street}
               onChange={(e) =>
                 setEdit({
                   ...edit,
-                  street: e.target.value
-                })}
+                  street: e.target.value,
+                })
+              }
             ></input>
           </div>
           <div>
             <p className={styled.username}>City</p>
             <input
-            value={edit.city}
+              value={edit.city}
               className={styled.bordername}
               type="text"
-              placeholder={edituser.address.city}
               onChange={(e) =>
                 setEdit({
                   ...edit,
-                  city: e.target.value
-                })}
+                  city: e.target.value,
+                })
+              }
             ></input>
           </div>
           <div>
             <p className={styled.username}>Zip-code</p>
             <input
-            value={edit.zipcode}
+              value={edit.zipcode}
               className={styled.bordername}
               type="text"
               onChange={(e) =>
                 setEdit({
                   ...edit,
-                  zipcode: e.target.value
-                })}
+                  zipcode: e.target.value,
+                })
+              }
             ></input>
           </div>
           <div>
             <p className={styled.username}>Phone</p>
             <input
-            value={edit.phone}
+              value={edit.phone}
               className={styled.bordername}
               type="text"
               onChange={(e) =>
                 setEdit({
                   ...edit,
-                  phone: e.target.value
-                })}
+                  phone: e.target.value,
+                })
+              }
             ></input>
           </div>
           <div>
             <p className={styled.username}>Website</p>
             <input
-            value={edit.website}
+              value={edit.website}
               className={styled.bordername}
               type="text"
-              placeholder={edituser.website}
               onChange={(e) =>
                 setEdit({
                   ...edit,
-                  website: e.target.value
-                })}
+                  website: e.target.value,
+                })
+              }
             ></input>
           </div>
           <div>
@@ -159,20 +183,24 @@ const Profile: React.FC<Props> = ({ name }, user): JSX.Element => {
             <input
               className={styled.comment}
               type="text"
-              placeholder={""}
-              
               onChange={(e) =>
                 setEdit({
                   ...edit,
-                  comment: e.target.value
-                })}
+                  comment: e.target.value,
+                })
+              }
             ></input>
           </div>
-          <button onClick={() => handleEdit(user.user)} className={styled.disable}>
-            <p className={styled.btntext}>Отправить</p>
+          <button onClick={() => handleEdit(user)} className={styled.disable}>
+            <p
+              onClick={() => console.log("click user", user.user)}
+              className={styled.btntext}
+            >
+              Отправить
+            </p>
           </button>
         </div>
-         {/* ) })} */}
+        {/* // ) })}  */}
       </div>
       <SideBar />
     </React.Fragment>

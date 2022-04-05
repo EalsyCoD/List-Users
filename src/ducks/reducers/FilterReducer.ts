@@ -2,7 +2,7 @@ import { AnyAction } from "redux";
 import { ThunkAction } from "redux-thunk";
 import { RootState } from "../../types";
 import { FilterInitialState, FilterAction, DispatchFilter } from "../../types";
-
+import { setLoader, deleteLoader } from "../actions/LoaderAction";
 const initialState: FilterInitialState = {
   filter: [],
 };

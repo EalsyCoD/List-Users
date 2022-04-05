@@ -5,6 +5,8 @@ import { setUsers } from "../../ducks/actions/UserProfileAction";
 
 import Profile from "../../Components/Profile/Profile";
 
+import { EditUser } from '../../ducks/actions/EditAction'
+
 export type RouteParams =
   | {
       name: any;
@@ -13,6 +15,9 @@ export type RouteParams =
   | Record<string, string | undefined>;
 
 const UsersPage = (): JSX.Element => {
+  const handleEdit = (username:any) => {
+    dispatch(EditUser(username))
+  }
   const params = useParams<RouteParams>();
   const dispatch = useDispatch();
 

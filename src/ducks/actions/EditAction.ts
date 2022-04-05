@@ -6,20 +6,18 @@ import axios from "axios";
 import { RootState } from "../../types";
 
 const EditUser = (
-    name: any,
-  ): ThunkAction<void, RootState, unknown, AnyAction> => {
-    console.log(name.id)
-    return async (dispatch) => {
-      try {
-        const res = await axios.put(`/users/${name.id}`, name);
-        dispatch({
-          type: "EDIT-USER",
-          payload: name,
-        });
-      } catch (err: any) {}
-    };
+  username: any
+): ThunkAction<void, RootState, unknown, AnyAction> => {
+  console.log(username.id);
+  return async (dispatch) => {
+    try {
+      const res = await axios.put(`/users/${username.id}`, username);
+      dispatch({
+        type: "EDIT-USER",
+        payload: username,
+      });
+    } catch (err: any) {}
   };
-  
+};
+
 export { EditUser };
-
-

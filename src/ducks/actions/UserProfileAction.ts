@@ -2,7 +2,7 @@ import { AnyAction } from "redux";
 import { ThunkAction } from "redux-thunk";
 import axios from "axios";
 
-import { RootState, EditUserState } from "../../types";
+import { RootState, EditUserState, ICard } from '../../types'
 
 const setUsers = (
   name: string
@@ -13,19 +13,25 @@ const setUsers = (
         data: EditUserState
       }
 
-      const editUser: EditUserState = {
-        id: data.id,
-        name: data.name,
-        username: data.username,
-        email: data.email,
-        address: {
-          street: data.address.street,
-          city: data.address.city,
-          zipcode: data.address.zipcode,
-        },
-        phone: data.phone,
-        website: data.website,
-      }
+      const editUser: EditUserState = ({
+        ...data,
+        items: data.items.map((item: ICard) => ({
+          id: item.id,
+          name: item.name,
+          username: item.username,
+          email: item.email,
+          address: {
+            street: item.address.street,
+            city: item.address.city,
+            zipcode: item.address.zipcode,
+          },
+          phone: item.phone,
+          website: item.website,
+          company: {
+            name: item.name
+          }
+        })) 
+      })
       dispatch({
         type: "EDIT-USERS",
         payload: editUser,
