@@ -6,10 +6,12 @@ import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { filterNameChange } from "../../ducks/reducers/FilterReducer";
 
-const UsersList = (): JSX.Element => {
+const UsersList = (name:any): JSX.Element => {
   const dispatch = useDispatch();
-  const users = useSelector((state: RootState) => state.users);
-
+  const users = useSelector((state: RootState) =>{
+    return state.users
+  })
+  
   const filters = useSelector((state: RootState) => state.filter);
   const handleChange = () => {
     const filterSort = users.sort((a: any, b: any) =>
@@ -32,7 +34,7 @@ const UsersList = (): JSX.Element => {
               <div className={styled.users}>
                 <p className={styled.name}>ФИО:</p>{" "}
                 <p className={styled.username}>{user.name}</p>
-                <Link to="/profile" type="submit" className={styled.button}>
+                <Link to={`/profile/${user.id}`} type="submit" className={styled.button}>
                   Подробнее
                 </Link>
               </div>

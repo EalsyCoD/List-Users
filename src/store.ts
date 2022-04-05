@@ -5,10 +5,14 @@ import { RootState } from "./types";
 
 import userReducer from "./ducks/reducers/UserReducers";
 import filterReducer from "./ducks/reducers/FilterReducer";
+import edituserReducer from "./ducks/reducers/UserProfileReducer";
+import editReducer from "./ducks/reducers/EditReducer";
 
 const reducer = combineReducers<RootState>({
   users: userReducer,
   filter: filterReducer,
+  edituser: edituserReducer,
+  edit: editReducer
 });
 
 const store = createStore(reducer, composeWithDevTools(applyMiddleware(thunk)));

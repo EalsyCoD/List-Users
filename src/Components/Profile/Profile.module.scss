@@ -78,6 +78,9 @@
   height: 24.12px;
   background: #808080;
   border-radius: 5px;
+  &:hover{
+    cursor: pointer;
+  }
 }
 
 .btntext {

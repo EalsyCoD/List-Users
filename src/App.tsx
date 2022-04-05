@@ -4,16 +4,16 @@ import { useDispatch } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 
 import Home from "./pages/Home/Home";
-import Profile from "./pages/Profile/Profile";
-// import Header from "./Components/Header/Header";
-// import SideBar from "./Components/SideBar/SideBar";
-// import UsersList from "./Components/ListUsers/UsersList";
+import UsersPage from "./pages/Profiles/UsersPage";
+
 
 import { setUser } from "./ducks/actions/UserAction";
+// import { EditUser } from "./ducks/actions/EditAction";
 
 import styled from "./styles.module.scss";
 
 const App = () => {
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(setUser(1));
@@ -23,7 +23,7 @@ const App = () => {
     <div className={styled.container}>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route path="/profile/:id" element={<UsersPage />} />
       </Routes>
     </div>
   );
