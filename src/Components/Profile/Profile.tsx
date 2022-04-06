@@ -1,11 +1,22 @@
 import React from "react";
 
 import styled from "./Profile.module.scss";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState, ICard } from "../../types";
+import { useDispatch } from "react-redux";
 import SideBar from "../../Components/SideBar/SideBar";
 
 import { EditUser } from "../../ducks/actions/EditAction";
+import { setNotification } from "../../ducks/actions/NotificationAction";
+
+const regexName = /^[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$/;
+const regexUsername = /^[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$/;
+const regexEmail = /^[-\w.]+@([A-z0-9][-A-z0-9]+\.)+[A-z]{2,4}$/;
+const regexStreet = /^[а-яА-ЯёЁa-zA-Z0-9]+$/;
+const regexCity =
+  /([a-zA-Zа-яА-ЯёЁ]+[-]?[a-zA-Zа-яА-ЯёЁ]*[-]?[a-zA-Zа-яА-ЯёЁ]*[-]?[a-zA-Zа-яА-ЯёЁ]*)/;
+const regexZipcode = /^[а-яА-ЯёЁa-zA-Z0-9]+$/;
+const regexPhone = /^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$/;
+const regexWebsite =
+  /^([a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,6}$/;
 
 interface Props {
   name: string;
@@ -24,9 +35,9 @@ const Profile: React.FC<Props> = ({ name }, user): JSX.Element => {
     website: "",
     comment: "",
   });
-  const edituser = useSelector((state: RootState) => state.edituser);
+  // const edituser = useSelector((state: RootState) => state.edituser);
 
-  const handleEdit = (user: any) => {
+  const handleEdit = (user: []) => {
     console.log("edit", user);
     const userEdit = {
       ...user,
@@ -39,7 +50,46 @@ const Profile: React.FC<Props> = ({ name }, user): JSX.Element => {
       phone: edit.phone,
       website: edit.website,
     };
-    dispatch(EditUser(userEdit));
+    if (edit.name.match(regexName)) {
+      dispatch(EditUser(userEdit));
+    } else {
+      dispatch(setNotification("Введите корректные данные", 400, 3));
+    }
+    if (edit.username.match(regexUsername)) {
+      dispatch(EditUser(userEdit));
+    } else {
+      dispatch(setNotification("Введите корректные данные", 400, 3));
+    }
+    if (edit.email.match(regexEmail)) {
+      dispatch(EditUser(userEdit));
+    } else {
+      dispatch(setNotification("Введите корректные данные", 400, 3));
+    }
+    if (edit.street.match(regexStreet)) {
+      dispatch(EditUser(userEdit));
+    } else {
+      dispatch(setNotification("Введите корректные данные", 400, 3));
+    }
+    if (edit.city.match(regexCity)) {
+      dispatch(EditUser(userEdit));
+    } else {
+      dispatch(setNotification("Введите корректные данные", 400, 3));
+    }
+    if (edit.zipcode.match(regexZipcode)) {
+      dispatch(EditUser(userEdit));
+    } else {
+      dispatch(setNotification("Введите корректные данные", 400, 3));
+    }
+    if (edit.phone.match(regexPhone)) {
+      dispatch(EditUser(userEdit));
+    } else {
+      dispatch(setNotification("Введите корректные данные", 400, 3));
+    }
+    if (edit.website.match(regexWebsite)) {
+      dispatch(EditUser(userEdit));
+    } else {
+      dispatch(setNotification("Введите корректные данные", 400, 3));
+    }
     setEdit({
       name: "",
       username: "",
@@ -62,9 +112,6 @@ const Profile: React.FC<Props> = ({ name }, user): JSX.Element => {
             <p className={styled.text}>Редактировать</p>
           </button>
         </div>
-        {/* {Array.isArray(edituser) &&
-        edituser.map((user: any, i: any) => {
-          return( */}
         <div className={styled.frame}>
           <div>
             <p className={styled.name}>Name</p>
@@ -200,7 +247,6 @@ const Profile: React.FC<Props> = ({ name }, user): JSX.Element => {
             </p>
           </button>
         </div>
-        {/* // ) })}  */}
       </div>
       <SideBar />
     </React.Fragment>

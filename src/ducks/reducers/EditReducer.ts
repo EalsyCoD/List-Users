@@ -1,9 +1,8 @@
 import { EditState, EditAction } from "../../types";
 
 const initialState: EditState = {
-    users: [],
-}
-
+  users: [],
+};
 
 const EditReducer = (
   state: EditState = initialState,
@@ -11,11 +10,11 @@ const EditReducer = (
 ): EditState => {
   switch (action.type) {
     case "EDIT-USER":
-      console.log(action.payload)
+      console.log(action.payload);
       return {
-          users: state.users.map((user:any) => 
-          user.id === action.payload.id ? {...action.payload} : user
-          ),
+        users: state.users.map((user: any) =>
+          user.id === action.payload.id ? { ...action.payload } : user
+        ),
       };
     default:
       return state;

@@ -17,7 +17,7 @@ const setUser = (
         payload: res.data,
       });
       dispatch(deleteLoader());
-    } catch (err: any) {
+    } catch (err) {
       dispatch(deleteLoader());
     }
   };

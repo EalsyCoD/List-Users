@@ -2,18 +2,18 @@ import { AnyAction } from "redux";
 import { ThunkAction } from "redux-thunk";
 import axios from "axios";
 
-import { RootState, EditUserState, ICard } from '../../types'
+import { RootState, EditUserState, ICard } from "../../types";
 
 const setUsers = (
   name: string
 ): ThunkAction<void, RootState, unknown, AnyAction> => {
   return async (dispatch) => {
     try {
-      const { data } = await axios.get("/users") as{
-        data: EditUserState
-      }
+      const { data } = (await axios.get("/users")) as {
+        data: EditUserState;
+      };
 
-      const editUser: EditUserState = ({
+      const editUser: EditUserState = {
         ...data,
         items: data.items.map((item: ICard) => ({
           id: item.id,
@@ -28,15 +28,15 @@ const setUsers = (
           phone: item.phone,
           website: item.website,
           company: {
-            name: item.name
-          }
-        })) 
-      })
+            name: item.name,
+          },
+        })),
+      };
       dispatch({
         type: "EDIT-USERS",
         payload: editUser,
       });
-    } catch (err: any) {}
+    } catch (err) {}
   };
 };
 

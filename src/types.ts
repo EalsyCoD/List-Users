@@ -4,7 +4,22 @@ export interface RootState {
   edituser: EditUserState;
   edit: EditState;
   loader: LoaderState;
+  notification: NotificationState;
 }
+
+export type NotificationState = {
+  message: string | null;
+  status: number | null;
+};
+
+export type NotificationAction = {
+  type: string;
+  payload: NotificationState;
+};
+
+export type DispatchNotificationType = (
+  args: NotificationAction
+) => NotificationAction;
 
 export type ICard = {
   id: number;
@@ -33,7 +48,7 @@ export type LoaderAction = {
 export type DispatchLoaderType = (args: LoaderAction) => LoaderAction;
 
 export type EditState = {
-  users: any;
+  users: Array<string>;
   id?: number;
 };
 
@@ -43,7 +58,7 @@ export type EditAction = {
 };
 
 export type FilterInitialState = {
-  filter: any;
+  filter: [];
 };
 
 export type FilterAction = {

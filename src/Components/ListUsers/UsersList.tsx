@@ -9,13 +9,13 @@ const UsersList = (): JSX.Element => {
   const users = useSelector((state: RootState) => state.users);
   const filters = useSelector((state: RootState) => state.filter);
   const handleChange = () => {
-    const filterSort = users.sort((a: any, b: any) =>
+    const filterSort = users.sort((a, b) =>
       a.address.city > b.address.city ? 1 : -1
     );
     dispatch(filterNameChange(filterSort));
   };
   const handleChangeCompany = () => {
-    const filterSort = users.sort((a: any, b: any) =>
+    const filterSort = users.sort((a, b) =>
       a.company.name > b.company.name ? 1 : -1
     );
     dispatch(filterNameChange(filterSort));

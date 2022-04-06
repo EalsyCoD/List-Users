@@ -16,7 +16,7 @@ const EditUser = (
         type: "EDIT-USER",
         payload: username,
       });
-    } catch (err: any) {}
+    } catch (err) {}
   };
 };
 
