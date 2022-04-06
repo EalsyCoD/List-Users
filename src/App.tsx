@@ -7,6 +7,7 @@ import Home from "./pages/Home/Home";
 import UsersPage from "./pages/Profiles/UsersPage";
 
 import { setUser } from "./ducks/actions/UserAction";
+import { setLoader, deleteLoader } from "./ducks/actions/LoaderAction";
 // import { EditUser } from "./ducks/actions/EditAction";
 
 import styled from "./styles.module.scss";
@@ -14,7 +15,11 @@ import styled from "./styles.module.scss";
 const App = () => {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(setUser(1));
+    dispatch(setLoader());
+    setTimeout(() => {
+      dispatch(setUser(1));
+      dispatch(deleteLoader());
+    }, 1000);
   }, [dispatch]);
 
   return (

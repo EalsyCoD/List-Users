@@ -10,16 +10,12 @@ const setUser = (
 ): ThunkAction<void, RootState, unknown, AnyAction> => {
   return async (dispatch) => {
     try {
-      dispatch(setLoader());
       const res = await axios.get("/users");
       dispatch({
         type: "SET-USERS",
         payload: res.data,
       });
-      dispatch(deleteLoader());
-    } catch (err) {
-      dispatch(deleteLoader());
-    }
+    } catch (err) {}
   };
 };
 
