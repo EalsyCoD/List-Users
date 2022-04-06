@@ -8,7 +8,6 @@ import UsersPage from "./pages/Profiles/UsersPage";
 
 import { setUser } from "./ducks/actions/UserAction";
 import { setLoader, deleteLoader } from "./ducks/actions/LoaderAction";
-// import { EditUser } from "./ducks/actions/EditAction";
 
 import styled from "./styles.module.scss";
 

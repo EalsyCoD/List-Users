@@ -1,7 +1,6 @@
 import { AnyAction } from "redux";
 import { ThunkAction } from "redux-thunk";
 import axios from "axios";
-import { setLoader, deleteLoader } from "./LoaderAction";
 
 import { RootState } from "../../types";
 

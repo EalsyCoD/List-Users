@@ -61,50 +61,50 @@ const Profile: React.FC<Props> = ({ name }, user): JSX.Element => {
       dispatch(EditUser(userEdit));
     } else {
       setTimeout(() => {
-        dispatch(setNotification("Введите корректный usename", 400, 5));
+        dispatch(setNotification("Введите корректный usename", 400, 8));
       }, 1000);
     }
     if (edit.email.match(regexEmail)) {
       dispatch(EditUser(userEdit));
     } else {
       setTimeout(() => {
-        dispatch(setNotification("Введите корректный email", 400, 6));
-      }, 1500);
+        dispatch(setNotification("Введите корректный email", 400, 12));
+      }, 2500);
     }
     if (edit.street.match(regexStreet)) {
       dispatch(EditUser(userEdit));
     } else {
       setTimeout(() => {
-        dispatch(setNotification("Введите корректный street", 400, 7));
-      }, 2000);
+        dispatch(setNotification("Введите корректный street", 400, 14));
+      }, 3500);
     }
     if (edit.city.match(regexCity)) {
       dispatch(EditUser(userEdit));
     } else {
       setTimeout(() => {
-        dispatch(setNotification("Введите корректный city", 400, 8));
-      }, 2500);
+        dispatch(setNotification("Введите корректный city", 400, 18));
+      }, 4500);
     }
     if (edit.zipcode.match(regexZipcode)) {
       dispatch(EditUser(userEdit));
     } else {
       setTimeout(() => {
-        dispatch(setNotification("Введите корректный zipcode", 400, 9));
-      }, 3000);
+        dispatch(setNotification("Введите корректный zipcode", 400, 22));
+      }, 5500);
     }
     if (edit.phone.match(regexPhone)) {
       dispatch(EditUser(userEdit));
     } else {
       setTimeout(() => {
-        dispatch(setNotification("Введите корректный phone", 400, 10));
-      }, 3500);
+        dispatch(setNotification("Введите корректный phone", 400, 26));
+      }, 6500);
     }
     if (edit.website.match(regexWebsite)) {
       dispatch(EditUser(userEdit));
     } else {
       setTimeout(() => {
-        dispatch(setNotification("Введите корректный website", 400, 11));
-      }, 4000);
+        dispatch(setNotification("Введите корректный website", 400, 10));
+      }, 7500);
     }
     setEdit({
       name: "",
