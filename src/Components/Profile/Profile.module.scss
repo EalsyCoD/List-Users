@@ -29,6 +29,12 @@
   font-size: 12px;
   padding: 4px 1px 5px 2px;
 }
+.active{
+  border: green;
+  color: green;
+  transition: 0.5s;
+  transform: scale(1.2)
+}
 
 .border {
   margin: 8px 0 0px 13px;

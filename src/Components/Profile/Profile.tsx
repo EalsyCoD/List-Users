@@ -24,6 +24,11 @@ interface Props {
 
 const Profile: React.FC<Props> = ({ name }, user): JSX.Element => {
   const dispatch = useDispatch();
+  const [readOnly, setReadOnly] = React.useState(true);
+  const rootClasses = [styled.text];
+  if (readOnly === false) {
+    rootClasses.push(styled.active);
+  }
   const [edit, setEdit] = React.useState({
     name: "",
     username: "",
@@ -125,13 +130,19 @@ const Profile: React.FC<Props> = ({ name }, user): JSX.Element => {
         <div className={styled.headerline}>
           <div className={styled.header}>Профиль пользователя</div>
           <button type="submit" className={styled.btn}>
-            <p className={styled.text}>Редактировать</p>
+            <p
+              className={rootClasses.join(" ")}
+              onClick={() => setReadOnly(false)}
+            >
+              Редактировать
+            </p>
           </button>
         </div>
         <div className={styled.frame}>
           <div>
             <p className={styled.name}>Name</p>
             <input
+              readOnly={readOnly}
               value={edit.name}
               className={styled.border}
               type="text"
@@ -146,6 +157,7 @@ const Profile: React.FC<Props> = ({ name }, user): JSX.Element => {
           <div>
             <p className={styled.username}>User name</p>
             <input
+              readOnly={readOnly}
               value={edit.username}
               className={styled.bordername}
               type="text"
@@ -160,6 +172,7 @@ const Profile: React.FC<Props> = ({ name }, user): JSX.Element => {
           <div>
             <p className={styled.username}>E-mail</p>
             <input
+              readOnly={readOnly}
               value={edit.email}
               className={styled.bordername}
               type="text"
@@ -174,6 +187,7 @@ const Profile: React.FC<Props> = ({ name }, user): JSX.Element => {
           <div>
             <p className={styled.username}>Street</p>
             <input
+              readOnly={readOnly}
               value={edit.street}
               className={styled.bordername}
               type="text"
@@ -188,6 +202,7 @@ const Profile: React.FC<Props> = ({ name }, user): JSX.Element => {
           <div>
             <p className={styled.username}>City</p>
             <input
+              readOnly={readOnly}
               value={edit.city}
               className={styled.bordername}
               type="text"
@@ -202,6 +217,7 @@ const Profile: React.FC<Props> = ({ name }, user): JSX.Element => {
           <div>
             <p className={styled.username}>Zip-code</p>
             <input
+              readOnly={readOnly}
               value={edit.zipcode}
               className={styled.bordername}
               type="text"
@@ -216,6 +232,7 @@ const Profile: React.FC<Props> = ({ name }, user): JSX.Element => {
           <div>
             <p className={styled.username}>Phone</p>
             <input
+              readOnly={readOnly}
               value={edit.phone}
               className={styled.bordername}
               type="text"
@@ -230,6 +247,7 @@ const Profile: React.FC<Props> = ({ name }, user): JSX.Element => {
           <div>
             <p className={styled.username}>Website</p>
             <input
+              readOnly={readOnly}
               value={edit.website}
               className={styled.bordername}
               type="text"
@@ -244,6 +262,7 @@ const Profile: React.FC<Props> = ({ name }, user): JSX.Element => {
           <div>
             <p className={styled.username}>Comment</p>
             <input
+              readOnly={readOnly}
               className={styled.comment}
               type="text"
               onChange={(e) =>
