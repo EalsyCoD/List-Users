@@ -29,83 +29,108 @@ const Profile: React.FC<Props> = ({ name }, user): JSX.Element => {
   if (readOnly === false) {
     rootClasses.push(styled.active);
   }
-  const [edit, setEdit] = React.useState({
+
+  const [edit, setEdit] = React.useState<any>({
+    id: 1,
     name: "",
     username: "",
     email: "",
-    street: "",
-    city: "",
-    zipcode: "",
+    address: {
+      street: "",
+      suite: "",
+      city: "",
+      zipcode: "",
+      geo: {
+        lat: "",
+        lng: "",
+      },
+    },
     phone: "",
     website: "",
-    comment: "",
+    company: {
+      name: "",
+      catchPhrase: "",
+      bs: "",
+    },
   });
-  // const edituser = useSelector((state: RootState) => state.edituser);
 
   const handleEdit = (user: []) => {
     console.log("edit", user);
-    const userEdit = {
+    const username = {
       ...user,
+      id: edit.id,
       name: edit.name,
-      username: edit.username,
+      username: edit.email,
       email: edit.email,
-      street: edit.street,
-      city: edit.city,
-      zipcode: edit.zipcode,
+      address: {
+        street: edit.address.street,
+        suite: edit.address.suite,
+        city: edit.address.city,
+        zipcode: edit.address.zipcode,
+        geo: {
+          lat: edit.address.geo.lat,
+          lng: edit.address.geo.lng,
+        },
+      },
       phone: edit.phone,
       website: edit.website,
+      company: {
+        name: edit.company.name,
+        catchPhrase: edit.company.catchPhrase,
+        bs: edit.company.bs,
+      },
     };
     if (edit.name.match(regexName)) {
-      dispatch(EditUser(userEdit));
+      dispatch(EditUser(username));
     } else {
       setTimeout(() => {
         dispatch(setNotification("Введите корректный name", 400, 4));
       }, 50);
     }
     if (edit.username.match(regexUsername)) {
-      dispatch(EditUser(userEdit));
+      dispatch(EditUser(username));
     } else {
       setTimeout(() => {
         dispatch(setNotification("Введите корректный usename", 400, 8));
       }, 1000);
     }
     if (edit.email.match(regexEmail)) {
-      dispatch(EditUser(userEdit));
+      dispatch(EditUser(username));
     } else {
       setTimeout(() => {
         dispatch(setNotification("Введите корректный email", 400, 12));
       }, 2500);
     }
-    if (edit.street.match(regexStreet)) {
-      dispatch(EditUser(userEdit));
+    if (edit.address.street.match(regexStreet)) {
+      dispatch(EditUser(username));
     } else {
       setTimeout(() => {
         dispatch(setNotification("Введите корректный street", 400, 14));
       }, 3500);
     }
-    if (edit.city.match(regexCity)) {
-      dispatch(EditUser(userEdit));
+    if (edit.address.city.match(regexCity)) {
+      dispatch(EditUser(username));
     } else {
       setTimeout(() => {
         dispatch(setNotification("Введите корректный city", 400, 18));
       }, 4500);
     }
-    if (edit.zipcode.match(regexZipcode)) {
-      dispatch(EditUser(userEdit));
+    if (edit.address.zipcode.match(regexZipcode)) {
+      dispatch(EditUser(username));
     } else {
       setTimeout(() => {
         dispatch(setNotification("Введите корректный zipcode", 400, 22));
       }, 5500);
     }
     if (edit.phone.match(regexPhone)) {
-      dispatch(EditUser(userEdit));
+      dispatch(EditUser(username));
     } else {
       setTimeout(() => {
         dispatch(setNotification("Введите корректный phone", 400, 26));
       }, 6500);
     }
     if (edit.website.match(regexWebsite)) {
-      dispatch(EditUser(userEdit));
+      dispatch(EditUser(username));
     } else {
       setTimeout(() => {
         dispatch(setNotification("Введите корректный website", 400, 10));
@@ -115,12 +140,13 @@ const Profile: React.FC<Props> = ({ name }, user): JSX.Element => {
       name: "",
       username: "",
       email: "",
-      street: "",
-      city: "",
-      zipcode: "",
+      address: {
+        street: "",
+        city: "",
+        zipcode: "",
+      },
       phone: "",
       website: "",
-      comment: "",
     });
   };
 
@@ -188,7 +214,7 @@ const Profile: React.FC<Props> = ({ name }, user): JSX.Element => {
             <p className={styled.username}>Street</p>
             <input
               readOnly={readOnly}
-              value={edit.street}
+              value={edit.address.street}
               className={styled.bordername}
               type="text"
               onChange={(e) =>
@@ -203,7 +229,7 @@ const Profile: React.FC<Props> = ({ name }, user): JSX.Element => {
             <p className={styled.username}>City</p>
             <input
               readOnly={readOnly}
-              value={edit.city}
+              value={edit.address.city}
               className={styled.bordername}
               type="text"
               onChange={(e) =>
@@ -218,7 +244,7 @@ const Profile: React.FC<Props> = ({ name }, user): JSX.Element => {
             <p className={styled.username}>Zip-code</p>
             <input
               readOnly={readOnly}
-              value={edit.zipcode}
+              value={edit.address.zipcode}
               className={styled.bordername}
               type="text"
               onChange={(e) =>
@@ -265,17 +291,11 @@ const Profile: React.FC<Props> = ({ name }, user): JSX.Element => {
               readOnly={readOnly}
               className={styled.comment}
               type="text"
-              onChange={(e) =>
-                setEdit({
-                  ...edit,
-                  comment: e.target.value,
-                })
-              }
             ></input>
           </div>
           <button onClick={() => handleEdit(user)} className={styled.disable}>
             <p
-              onClick={() => console.log("click user", user.user)}
+              onClick={() => console.log("click user", user)}
               className={styled.btntext}
             >
               Отправить
