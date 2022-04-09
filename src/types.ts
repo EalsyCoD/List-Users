@@ -2,7 +2,7 @@ export interface RootState {
   users: UserInitialState;
   filter: FilterInitialState;
   edituser: EditUserState;
-  edit: EditState;
+  edit: EditProfileState;
   loader: LoaderState;
   notification: NotificationState;
 }
@@ -40,6 +40,22 @@ export type LoaderState = {
   status: boolean;
 };
 
+export type EditProfileState = {
+items: IUsers[],
+id?: number,
+}
+
+export type IUsers = {
+  id: number;
+  name: string;
+  username: string;
+  email: string;
+  company: Company;
+  address: UserAddress;
+  phone: number;
+  website: string;
+}
+
 export type LoaderAction = {
   type: string;
   payload: LoaderState;
@@ -54,7 +70,7 @@ export type EditState = {
 
 export type EditAction = {
   type: string;
-  payload: EditState;
+  payload: EditProfileState;
 };
 
 export type FilterInitialState = {
@@ -107,6 +123,7 @@ export type UserAddress = {
 
 export type EditUserState = {
   items: ICard[];
+  id?: number,
 };
 
 export type EditUserAction = {

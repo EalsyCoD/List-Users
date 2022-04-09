@@ -1,14 +1,14 @@
-import React from "react";
+import React from 'react';
 
-import styled from "./Profile.module.scss";
-import { useDispatch } from "react-redux";
-import SideBar from "../../Components/SideBar/SideBar";
+import styled from './Profile.module.scss';
+import { useDispatch } from 'react-redux';
+import SideBar from '../../Components/SideBar/SideBar';
+import { EditUser } from '../../ducks/actions/EditAction';
+import { setNotification } from '../../ducks/actions/NotificationAction';
+import { ICard } from '../../types';
 
-import { EditUser } from "../../ducks/actions/EditAction";
-import { setNotification } from "../../ducks/actions/NotificationAction";
-
-const regexName = /^[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$/;
-const regexUsername = /^[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$/;
+const regexName = /^[a-zA-Z][a-zA-Z0-9-_\\.]{1,20}$/;
+const regexUsername = /^[a-zA-Z][a-zA-Z0-9-_\\.]{1,20}$/;
 const regexEmail = /^[-\w.]+@([A-z0-9][-A-z0-9]+\.)+[A-z]{2,4}$/;
 const regexStreet = /^[а-яА-ЯёЁa-zA-Z0-9]+$/;
 const regexCity =
@@ -16,137 +16,125 @@ const regexCity =
 const regexZipcode = /^[а-яА-ЯёЁa-zA-Z0-9]+$/;
 const regexPhone = /^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$/;
 const regexWebsite =
-  /^([a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,6}$/;
+  /^([a-zA-Z0-9]([a-zA-Z0-9\\-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,6}$/;
 
 interface Props {
-  name: string;
+  id: number;
 }
 
-const Profile: React.FC<Props> = ({ name }, user): JSX.Element => {
+const Profile: React.FC<Props> = (item: any) => {
   const dispatch = useDispatch();
-  const [readOnly, setReadOnly] = React.useState(true);
-  const rootClasses = [styled.text];
+  const [ readOnly, setReadOnly ] = React.useState(true);
+  const rootClasses = [ styled.text ];
   if (readOnly === false) {
     rootClasses.push(styled.active);
   }
 
-  const [edit, setEdit] = React.useState<any>({
-    id: 1,
-    name: "",
-    username: "",
-    email: "",
+  const [ edit, setEdit ] = React.useState<any>({
+    id: item.id,
+    name: '',
+    username: '',
+    email: '',
     address: {
-      street: "",
-      suite: "",
-      city: "",
-      zipcode: "",
-      geo: {
-        lat: "",
-        lng: "",
-      },
+      street: '',
+      city: '',
+      zipcode: '',
     },
-    phone: "",
-    website: "",
+    phone: '',
+    website: '',
     company: {
-      name: "",
-      catchPhrase: "",
-      bs: "",
+      name: '',
     },
   });
 
-  const handleEdit = (user: []) => {
-    console.log("edit", user);
-    const username = {
-      ...user,
+  const handleEdit = () => {
+    const item = {
       id: edit.id,
       name: edit.name,
       username: edit.email,
       email: edit.email,
       address: {
         street: edit.address.street,
-        suite: edit.address.suite,
         city: edit.address.city,
         zipcode: edit.address.zipcode,
-        geo: {
-          lat: edit.address.geo.lat,
-          lng: edit.address.geo.lng,
-        },
       },
       phone: edit.phone,
       website: edit.website,
       company: {
         name: edit.company.name,
-        catchPhrase: edit.company.catchPhrase,
-        bs: edit.company.bs,
       },
     };
     if (edit.name.match(regexName)) {
-      dispatch(EditUser(username));
+      dispatch(EditUser(item));
     } else {
       setTimeout(() => {
-        dispatch(setNotification("Введите корректный name", 400, 4));
+        dispatch(setNotification('Введите корректный name', 400, 4));
       }, 50);
     }
     if (edit.username.match(regexUsername)) {
-      dispatch(EditUser(username));
+      dispatch(EditUser(item));
     } else {
       setTimeout(() => {
-        dispatch(setNotification("Введите корректный usename", 400, 8));
+        dispatch(setNotification('Введите корректный usename', 400, 8));
       }, 1000);
     }
     if (edit.email.match(regexEmail)) {
-      dispatch(EditUser(username));
+      dispatch(EditUser(item));
     } else {
       setTimeout(() => {
-        dispatch(setNotification("Введите корректный email", 400, 12));
+        dispatch(setNotification('Введите корректный email', 400, 12));
       }, 2500);
     }
     if (edit.address.street.match(regexStreet)) {
-      dispatch(EditUser(username));
+      dispatch(EditUser(item));
     } else {
       setTimeout(() => {
-        dispatch(setNotification("Введите корректный street", 400, 14));
+        dispatch(setNotification('Введите корректный street', 400, 14));
       }, 3500);
     }
     if (edit.address.city.match(regexCity)) {
-      dispatch(EditUser(username));
+      dispatch(EditUser(item));
     } else {
       setTimeout(() => {
-        dispatch(setNotification("Введите корректный city", 400, 18));
+        dispatch(setNotification('Введите корректный city', 400, 18));
       }, 4500);
     }
     if (edit.address.zipcode.match(regexZipcode)) {
-      dispatch(EditUser(username));
+      dispatch(EditUser(item));
     } else {
       setTimeout(() => {
-        dispatch(setNotification("Введите корректный zipcode", 400, 22));
+        dispatch(setNotification('Введите корректный zipcode', 400, 22));
       }, 5500);
     }
     if (edit.phone.match(regexPhone)) {
-      dispatch(EditUser(username));
+      dispatch(EditUser(item));
     } else {
       setTimeout(() => {
-        dispatch(setNotification("Введите корректный phone", 400, 26));
+        dispatch(setNotification('Введите корректный phone', 400, 26));
       }, 6500);
     }
-    if (edit.website.match(regexWebsite)) {
-      dispatch(EditUser(username));
-    } else {
-      setTimeout(() => {
-        dispatch(setNotification("Введите корректный website", 400, 10));
-      }, 7500);
-    }
+    // if (edit.website.match(regexWebsite)) {
+    //   dispatch(EditUser(item));
+    // } else {
+    //   setTimeout(() => {
+    //     dispatch(setNotification('Введите корректный website', 400, 10));
+    //   }, 7500);
+    // }
     setEdit({
-      name: "",
-      username: "",
-      email: "",
+      id: 0,
+      name: '',
+      username: '',
+      email: '',
       address: {
-        street: "",
-        city: "",
-        zipcode: "",
+        street: '',
+        city: '',
+        zipcode: '',
       },
-      phone: "",
-      website: "",
+      phone: '',
+      website: '',
+      company: {
+        name: '',
+      },
     });
   };
 
@@ -157,7 +145,7 @@ const Profile: React.FC<Props> = ({ name }, user): JSX.Element => {
           <div className={styled.header}>Профиль пользователя</div>
           <button type="submit" className={styled.btn}>
             <p
-              className={rootClasses.join(" ")}
+              className={rootClasses.join(' ')}
               onClick={() => setReadOnly(false)}
             >
               Редактировать
@@ -293,9 +281,8 @@ const Profile: React.FC<Props> = ({ name }, user): JSX.Element => {
               type="text"
             ></input>
           </div>
-          <button onClick={() => handleEdit(user)} className={styled.disable}>
+          <button onClick={handleEdit} className={styled.disable}>
             <p
-              onClick={() => console.log("click user", user)}
               className={styled.btntext}
             >
               Отправить

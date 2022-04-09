@@ -1,9 +1,9 @@
-import React from "react";
-import styled from "./SideBar.module.scss";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../types";
-import { filterNameChange } from "../../ducks/reducers/FilterReducer";
-import { filterNameChangeCompany } from "../../ducks/reducers/FilterReducerCompany";
+import React from 'react';
+import styled from './SideBar.module.scss';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../types';
+import { filterNameChange } from '../../ducks/reducers/FilterReducer';
+import { filterNameChangeCompany } from '../../ducks/reducers/FilterReducerCompany';
 
 const SideBar = () => {
   const dispatch = useDispatch();
@@ -11,13 +11,13 @@ const SideBar = () => {
 
   const handleChange = () => {
     const filterSort = users.sort((a, b) =>
-      a.address.city > b.address.city ? 1 : -1
+      a.address.city > b.address.city ? 1 : -1,
     );
     dispatch(filterNameChange(filterSort));
   };
   const handleChangeCompany = () => {
     const filterSort = users.sort((a, b) =>
-      a.company.name > b.company.name ? 1 : -1
+      a.company.name > b.company.name ? 1 : -1,
     );
     dispatch(filterNameChangeCompany(filterSort));
   };

@@ -1,19 +1,19 @@
-import { EditState, EditAction } from "../../types";
+import { EditUserState, EditUserAction } from '../../types';
 
-const initialState: EditState = {
-  users: [],
+const initialState: EditUserState = {
+  items: [],
 };
 
 const EditReducer = (
-  state: EditState = initialState,
-  action: EditAction
-): EditState => {
+  state: EditUserState = initialState,
+  action: EditUserAction,
+): EditUserState => {
   switch (action.type) {
-    case "EDIT-USER":
+    case 'EDIT-USER':
       console.log(action.payload);
       return {
-        users: state.users.map((user: any) =>
-          user.id === action.payload.id ? { ...action.payload } : user
+        items: state.items.map((item: any) =>
+          item.id === action.payload.id ? { ...action.payload } : item,
         ),
       };
     default:

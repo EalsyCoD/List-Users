@@ -1,9 +1,9 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import { RootState } from "../../types";
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../types';
 
-import styled from "./Notification.module.scss";
-import img from "./icon-error.svg";
+import styled from './Notification.module.scss';
+import img from './icon-error.svg';
 const Notification = () => {
   const notification = useSelector((state: RootState) => state.notification);
 
@@ -17,9 +17,9 @@ const Notification = () => {
       color={
         notification.status !== null
           ? notification.status > 300
-            ? "#d32f2f"
-            : "#2e7d32"
-          : ""
+            ? '#d32f2f'
+            : '#2e7d32'
+          : ''
       }
     >
       <div className={styled.wrap}>

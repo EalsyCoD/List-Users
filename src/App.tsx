@@ -1,15 +1,15 @@
-import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes } from 'react-router-dom';
 
-import Home from "./pages/Home/Home";
-import UsersPage from "./pages/Profiles/UsersPage";
+import Home from './pages/Home/Home';
+import UsersPage from './pages/Profiles/UsersPage';
 
-import { setUser } from "./ducks/actions/UserAction";
-import { setLoader, deleteLoader } from "./ducks/actions/LoaderAction";
+import { setUser } from './ducks/actions/UserAction';
+import { setLoader, deleteLoader } from './ducks/actions/LoaderAction';
 
-import styled from "./styles.module.scss";
+import styled from './styles.module.scss';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -19,7 +19,7 @@ const App = () => {
       dispatch(setUser(1));
       dispatch(deleteLoader());
     }, 1000);
-  }, [dispatch]);
+  }, [ dispatch ]);
 
   return (
     <div className={styled.container}>

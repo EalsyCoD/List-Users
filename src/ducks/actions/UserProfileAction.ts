@@ -1,15 +1,15 @@
-import { AnyAction } from "redux";
-import { ThunkAction } from "redux-thunk";
-import axios from "axios";
+import { AnyAction } from 'redux';
+import { ThunkAction } from 'redux-thunk';
+import axios from 'axios';
 
-import { RootState, EditUserState, ICard } from "../../types";
+import { RootState, EditUserState, ICard } from '../../types';
 
 const setUsers = (
-  name: string
+  _name: string,
 ): ThunkAction<void, RootState, unknown, AnyAction> => {
   return async (dispatch) => {
     try {
-      const { data } = (await axios.get("/users")) as {
+      const { data } = (await axios.get('/users')) as {
         data: EditUserState;
       };
 
@@ -33,7 +33,7 @@ const setUsers = (
         })),
       };
       dispatch({
-        type: "EDIT-USERS",
+        type: 'EDIT-USERS',
         payload: editUser,
       });
     } catch (err) {}

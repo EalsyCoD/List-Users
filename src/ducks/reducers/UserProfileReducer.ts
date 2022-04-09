@@ -1,4 +1,4 @@
-import { EditUserState, EditUserAction } from "../../types";
+import { EditUserState, EditUserAction } from '../../types';
 
 const initialState: EditUserState = {
   items: [],
@@ -6,10 +6,10 @@ const initialState: EditUserState = {
 
 const edituserReducer = (
   state: EditUserState = initialState,
-  action: EditUserAction
+  action: EditUserAction,
 ): EditUserState => {
   switch (action.type) {
-    case "EDIT-USERS":
+    case 'EDIT-USERS':
       return action.payload;
 
     default:

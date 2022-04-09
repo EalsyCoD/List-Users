@@ -1,10 +1,10 @@
-import React from "react";
-import ReactDom from "react-dom";
-import { Provider } from "react-redux";
-import store from "./store";
-import App from "./App";
-import { BrowserRouter as Router } from "react-router-dom";
-import "./styles.module.scss";
+import React from 'react';
+import ReactDom from 'react-dom';
+import { Provider } from 'react-redux';
+import store from './store';
+import App from './App';
+import { BrowserRouter as Router } from 'react-router-dom';
+import './styles.module.scss';
 
 ReactDom.render(
   <Router>
@@ -12,5 +12,5 @@ ReactDom.render(
       <App />
     </Provider>
   </Router>,
-  document.getElementById("root")
+  document.getElementById('root'),
 );

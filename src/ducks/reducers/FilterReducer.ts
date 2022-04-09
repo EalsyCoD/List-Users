@@ -1,7 +1,6 @@
-import { AnyAction } from "redux";
-import { ThunkAction } from "redux-thunk";
-import { RootState } from "../../types";
-import { FilterInitialState, FilterAction, DispatchFilter } from "../../types";
+import { AnyAction } from 'redux';
+import { ThunkAction } from 'redux-thunk';
+import { RootState, FilterInitialState, FilterAction, DispatchFilter } from '../../types';
 
 const initialState: FilterInitialState = {
   filter: [],
@@ -9,14 +8,14 @@ const initialState: FilterInitialState = {
 
 const filterReducer = (
   state: FilterInitialState = initialState,
-  action: FilterAction
+  action: FilterAction,
 ): FilterInitialState => {
   switch (action.type) {
-    case "SET-FILTER":
+    case 'SET-FILTER':
       return {
         ...state,
         filter: state.filter.sort((a: any, b: any) =>
-          a.address.city > b.address.city ? 1 : -1
+          a.address.city > b.address.city ? 1 : -1,
         ),
       };
     default:
@@ -25,11 +24,11 @@ const filterReducer = (
 };
 
 export const filterNameChange = (
-  filter: any
+  filter: any,
 ): ThunkAction<void, RootState, unknown, AnyAction> => {
   return async (dispatch: DispatchFilter) => {
     dispatch({
-      type: "SET-FILTER",
+      type: 'SET-FILTER',
       payload: filter,
     });
   };

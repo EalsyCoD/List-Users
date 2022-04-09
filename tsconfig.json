@@ -1,26 +1,38 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "baseUrl": ".",
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitReturns": false,
+    "noFallthroughCasesInSwitch": false,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "target": "es2017",
+    "module": "es2020",
     "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
+      "es2020",
+      "dom"
     ],
+
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "noFallthroughCasesInSwitch": true,
-    "module": "esnext",
-    "moduleResolution": "node",
+
     "resolveJsonModule": true,
-    "isolatedModules": true,
+
+    "isolatedModules": false,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react",
+
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "strictNullChecks": true,
+
+    "noUnusedLocals": false,
+    "noUnusedParameters": true,
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src"]
 }

@@ -1,4 +1,4 @@
-import { NotificationState, NotificationAction } from "../../types";
+import { NotificationState, NotificationAction } from '../../types';
 
 const initialState: NotificationState = {
   message: null,
@@ -7,15 +7,15 @@ const initialState: NotificationState = {
 
 const notificationReducer = (
   state: NotificationState = initialState,
-  action: NotificationAction
+  action: NotificationAction,
 ): NotificationState => {
   switch (action.type) {
-    case "NEW-NOTIFICATION":
+    case 'NEW-NOTIFICATION':
       return {
         message: action.payload.message,
         status: action.payload.status,
       };
-    case "CLEAR-NOTIFICATION":
+    case 'CLEAR-NOTIFICATION':
       return {
         message: action.payload.message,
         status: action.payload.status,

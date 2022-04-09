@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "./Header.module.scss";
+import React from 'react';
+import styled from './Header.module.scss';
 
 const Header = () => (
   <div className={styled.container}>

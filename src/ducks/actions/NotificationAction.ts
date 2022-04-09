@@ -1,15 +1,15 @@
-import { AnyAction } from "redux";
-import { ThunkAction } from "redux-thunk";
-import { DispatchNotificationType, RootState } from "../../types";
+import { AnyAction } from 'redux';
+import { ThunkAction } from 'redux-thunk';
+import { DispatchNotificationType, RootState } from '../../types';
 
 const setNotification = (
   message: string,
   status: number,
-  time: number
+  time: number,
 ): ThunkAction<void, RootState, unknown, AnyAction> => {
   return async (dispatch: DispatchNotificationType) => {
     dispatch({
-      type: "NEW-NOTIFICATION",
+      type: 'NEW-NOTIFICATION',
       payload: {
         message: message,
         status: status,
@@ -18,13 +18,13 @@ const setNotification = (
     setTimeout(
       () =>
         dispatch({
-          type: "CLEAR-NOTIFICATION",
+          type: 'CLEAR-NOTIFICATION',
           payload: {
             message: null,
             status: null,
           },
         }),
-      time * 1000
+      time * 1000,
     );
   };
 };

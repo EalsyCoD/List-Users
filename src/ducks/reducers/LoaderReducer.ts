@@ -1,4 +1,4 @@
-import { LoaderState, LoaderAction } from "../../types";
+import { LoaderState, LoaderAction } from '../../types';
 
 const initialState: LoaderState = {
   status: false,
@@ -6,14 +6,14 @@ const initialState: LoaderState = {
 
 const loaderReducer = (
   state: LoaderState = initialState,
-  action: LoaderAction
+  action: LoaderAction,
 ): LoaderState => {
   switch (action.type) {
-    case "NEW-LOADER":
+    case 'NEW-LOADER':
       return {
         status: action.payload.status,
       };
-    case "DELETE-LOADER":
+    case 'DELETE-LOADER':
       return {
         status: action.payload.status,
       };

@@ -1,15 +1,15 @@
-import { UserInitialState, UserAction } from "../../types";
+import { UserInitialState, UserAction } from '../../types';
 
 const initialState: UserInitialState = [
   {
     id: 0,
-    name: "",
-    username: "",
-    email: "",
+    name: '',
+    username: '',
+    email: '',
     address: {
-      street: "",
-      suite: "",
-      city: "",
+      street: '',
+      suite: '',
+      city: '',
       zipcode: 0,
       geo: {
         lat: 0,
@@ -17,20 +17,20 @@ const initialState: UserInitialState = [
       },
     },
     phone: 0,
-    website: "",
+    website: '',
     company: {
-      name: "",
-      catchPhrase: "",
-      bs: "",
+      name: '',
+      catchPhrase: '',
+      bs: '',
     },
   },
 ];
 const userReducer = (
   state: UserInitialState = initialState,
-  action: UserAction
+  action: UserAction,
 ): UserInitialState => {
   switch (action.type) {
-    case "SET-USERS":
+    case 'SET-USERS':
       return action.payload;
     default:
       return state;
