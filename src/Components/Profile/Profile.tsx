@@ -22,7 +22,7 @@ interface Props {
   id: number;
 }
 
-const Profile: React.FC<Props> = (item: any) => {
+const Profile: React.FC<Props> = (item) => {
   const dispatch = useDispatch();
   const [ readOnly, setReadOnly ] = React.useState(true);
   const rootClasses = [ styled.text ];
@@ -30,7 +30,7 @@ const Profile: React.FC<Props> = (item: any) => {
     rootClasses.push(styled.active);
   }
 
-  const [ edit, setEdit ] = React.useState<any>({
+  const [ edit, setEdit ] = React.useState({
     id: item.id,
     name: '',
     username: '',
@@ -113,13 +113,13 @@ const Profile: React.FC<Props> = (item: any) => {
         dispatch(setNotification('Введите корректный phone', 400, 26));
       }, 6500);
     }
-    // if (edit.website.match(regexWebsite)) {
-    //   dispatch(EditUser(item));
-    // } else {
-    //   setTimeout(() => {
-    //     dispatch(setNotification('Введите корректный website', 400, 10));
-    //   }, 7500);
-    // }
+    if (edit.website.match(regexWebsite)) {
+      dispatch(EditUser(item));
+    } else {
+      setTimeout(() => {
+        dispatch(setNotification('Введите корректный website', 400, 10));
+      }, 7500);
+    }
     setEdit({
       id: 0,
       name: '',
@@ -133,7 +133,7 @@ const Profile: React.FC<Props> = (item: any) => {
       phone: '',
       website: '',
       company: {
-        name: '',
+        name: edit.company.name,
       },
     });
   };
@@ -208,7 +208,7 @@ const Profile: React.FC<Props> = (item: any) => {
               onChange={(e) =>
                 setEdit({
                   ...edit,
-                  street: e.target.value,
+                  address: { ...edit.address, street: e.target.value },
                 })
               }
             ></input>
@@ -223,7 +223,7 @@ const Profile: React.FC<Props> = (item: any) => {
               onChange={(e) =>
                 setEdit({
                   ...edit,
-                  city: e.target.value,
+                  address: { ...edit.address, city: e.target.value },
                 })
               }
             ></input>
@@ -238,7 +238,7 @@ const Profile: React.FC<Props> = (item: any) => {
               onChange={(e) =>
                 setEdit({
                   ...edit,
-                  zipcode: e.target.value,
+                  address: { ...edit.address, zipcode: e.target.value },
                 })
               }
             ></input>
